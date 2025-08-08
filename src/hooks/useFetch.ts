@@ -2,9 +2,8 @@ import { useEffect, useState } from "react";
 
 export default function useFetch<APIData>(url: string) {
   const [loading, setLoading] = useState<boolean>(false);
-  const [data, setData] = useState<APIData | null>();
-  const [error, setError] = useState<string | null>();
-  console.log(url);
+  const [data, setData] = useState<APIData | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   //fetch data with abort signal timeout
   useEffect(() => {

@@ -1,18 +1,17 @@
 import { useMemo } from "react";
-import useBaseURL from "../hooks/useBaseURL";
 import useFetch from "../hooks/useFetch";
 import type { RegionData } from "../utils/types";
 import { Link } from "react-router-dom";
+import generateURL from "../utils/generateURL";
 
 export default function RegionSection() {
   //create url to follow
-  const regionUrl = useBaseURL("list.php?a=list");
+  const url = generateURL("list.php?a=list");
 
-  const { loading, data, error } = useFetch<RegionData>(regionUrl);
+  const { loading, data, error } = useFetch<RegionData>(url);
 
   const regionSetup = useMemo(() => {
     if (data) {
-        console.log(data);
       return data.meals.map((region) => (
         <Link key={region.strArea} to={`/region/${region.strArea}`}>
           {region.strArea}
@@ -25,7 +24,7 @@ export default function RegionSection() {
     if (error) {
       return <p>{error}</p>;
     }
-  }, [data]);
+  }, [data, loading, error]);
 
   return <div>{regionSetup}</div>;
 }

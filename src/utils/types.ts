@@ -1,5 +1,9 @@
+type Category = {
+    strCategory: string
+}
+
 export interface CategoryData {
-    strCategory: "string"
+    meals: Category[];
 }
 
 

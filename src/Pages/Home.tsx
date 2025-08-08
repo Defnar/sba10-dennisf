@@ -1,5 +1,6 @@
 import { useMemo } from "react";
 import RegionSection from "../components/RegionSection";
+import CategorySection from "../components/CategorySection";
 export default function HomePage() {
   //am lazy
   const letterArray = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
@@ -17,6 +18,7 @@ export default function HomePage() {
       <h2>Region</h2>
       <RegionSection />
       <h2>Category</h2>
+      <CategorySection />
     </div>
   );
 }
