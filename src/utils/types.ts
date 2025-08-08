@@ -1,3 +1,17 @@
+export interface CategoryData {
+    strCategory: "string"
+}
+
+
+type Region = {
+    strArea: string;
+}
+
+export interface RegionData {
+    meals: Region[];
+}
+
+
 export interface RecipeData {
   idMeal: string;
   strMeal: string;

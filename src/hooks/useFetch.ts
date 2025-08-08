@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import type { RecipeData } from "../utils/types";
 
-export default function useFetch(url: string) {
+export default function useFetch<APIData>(url: string) {
   const [loading, setLoading] = useState<boolean>(false);
-  const [data, setData] = useState<RecipeData[] | null>();
+  const [data, setData] = useState<APIData | null>();
   const [error, setError] = useState<string | null>();
+  console.log(url);
 
   //fetch data with abort signal timeout
   useEffect(() => {
@@ -21,11 +21,9 @@ export default function useFetch(url: string) {
     const fetchData = async () => {
       try {
         const response = await fetch(url, { signal: controller.signal });
-
         if (!response.ok) {
           throw new Error(`HTTP Error: ${response.status}`);
         }
-
         const responseData = await response.json();
         setData(responseData);
       } catch (error) {
@@ -46,5 +44,5 @@ export default function useFetch(url: string) {
     };
   }, [url]);
 
-  return [loading, data, error];
+  return {loading, data, error};
 }
