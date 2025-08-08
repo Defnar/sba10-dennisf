@@ -8,6 +8,7 @@ export default function AppLayout() {
 
 
     return (
+        <Header />
         {showSearch && (<SearchBars />)}
         <Routes>
             <Route path="/" element={<HomePage />} />
