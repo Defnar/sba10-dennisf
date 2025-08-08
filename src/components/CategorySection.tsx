@@ -6,18 +6,21 @@ import generateURL from "../utils/generateURL";
 
 export default function CategorySection() {
   //create url to follow
-  const url = generateURL("list.php?c=list");
+  const url = generateURL("categories.php");
 
   const { loading, data, error } = useFetch<CategoryData>(url);
 
   const categorySetup = useMemo(() => {
     if (data) {
-      return data.meals.map((category) => (
+      return data.categories.map((category) => (
+
         <Link
-          key={category.strCategory}
+          key={category.idCategory}
           to={`/category/${category.strCategory}`}
         >
-          {category.strCategory}
+          <img src={category.strCategoryThumb} alt={`example of ${category.strCategory}`} loading="lazy"/>
+          <h2>{category.strCategory}</h2>
+          <p>{category.strCategoryDescription}</p>
         </Link>
       ));
     }

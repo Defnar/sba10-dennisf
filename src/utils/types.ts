@@ -1,9 +1,12 @@
-type Category = {
-    strCategory: string
+interface Categories  {
+    idCategory: string,
+    strCategory: string,
+    strCategoryThumb: string,
+    strCategoryDescription: string
 }
 
 export interface CategoryData {
-    meals: Category[];
+    categories: Categories[];
 }
 
 
