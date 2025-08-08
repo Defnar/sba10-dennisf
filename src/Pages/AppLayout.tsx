@@ -1,19 +1,16 @@
 import { useState } from "react"
-import { Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
+import HomePage from "./Home";
 
 export default function AppLayout() {
 
-    const [showSearch, setShowSearch] = useState<boolean>(true);
+    const [showSearch, setShowSearch] = useState<boolean>(false);
 
 
 
     return (
-        <Header />
-        {showSearch && (<SearchBars />)}
         <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/search/" element={<SearchPage />} />
-            <Route path="/recipe/*" element={<RecipePage />} />
         </Routes>
     )
 }
