@@ -25,7 +25,7 @@ export default function Search() {
     if (data) {
       return data.meals.map((recipe) => {
         return <li key={recipe.idMeal}>
-          <Link to={`recipe/${recipe.idMeal}`}>
+          <Link to={`/recipe/${recipe.idMeal}`}>
             <h2>{recipe.strMeal}</h2>
             <img src={recipe.strMealThumb} alt={recipe.strMeal} />
           </Link>
