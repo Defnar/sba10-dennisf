@@ -95,3 +95,7 @@ export interface SearchBarProps {
   isDynamic: boolean;
   displaySearchButton: boolean;
 }
+
+export interface RecipeProp {
+  isRandom?: boolean;
+}

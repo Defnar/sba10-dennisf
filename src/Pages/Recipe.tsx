@@ -18,11 +18,14 @@ export default function Recipe({ isRandom = false }: RecipeProp) {
   //grabs the meals array
   const recipeData = useMemo(() => (data ? data.meals[0] : null), [data]);
 
+  //grabs an ingredients and measure array from the recipe data
   const ingredients = useMemo(
     () => (recipeData ? getIngredientArray(recipeData) : null),
     [recipeData]
   );
 
+
+  //creates a visual display out of the ingredients and measures array
   const ingredientSection = useMemo(
     () =>
       ingredients ? (
