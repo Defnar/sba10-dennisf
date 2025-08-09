@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import HomePage from "./Pages/Home";
 import ResultList from "./Pages/ResultList";
+import Recipe from "./Pages/Recipe";
 
 function App() {
   return (
@@ -16,6 +17,9 @@ function App() {
           path="/category/:category"
           element={<ResultList listType="category" />}
         />
+        <Route
+        path="/recipe/:idMeal"
+        element={<Recipe />} />
       </Routes>
     </>
   );

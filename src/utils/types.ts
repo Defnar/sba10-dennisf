@@ -13,13 +13,9 @@ export interface MealList {
     meals: Meal[]
 }
 
-export interface Meal {
-
-    strMeal: string,
-    strMealThumb: string,
-    idMeal: string
+export interface Recipe {
+    meals: Meal[]
 }
-
 
 type Region = {
     strArea: string;
@@ -29,6 +25,10 @@ export interface RegionData {
     meals: Region[];
 }
 
+export interface IngredientMeasure {
+    ingredients: string,
+    measures: string | null
+}
 
 export type ListType = "region" | "category"
 
@@ -36,14 +36,14 @@ export type ResultListProp = {
     listType: ListType
 }
 
-export interface RecipeData {
+export interface Meal {
   idMeal: string;
   strMeal: string;
   strMealAlternate: string | null;
   strCategory: string;
-  strArea: string;
-  strInstructions: string;
-  strMealThumb: string;
+  strArea: string | null;
+  strInstructions: string | null;
+  strMealThumb: string
   strTags: string | null;
   strYoutube: string | null;
   strIngredient1: string | null;
