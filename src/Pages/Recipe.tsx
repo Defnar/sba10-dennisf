@@ -1,12 +1,17 @@
 import { useParams } from "react-router-dom";
 import generateURL from "../utils/generateURL";
 import useFetch from "../hooks/useFetch";
-import type { Recipe, RecipeProp } from "../utils/types";
-import { useMemo } from "react";
+import type { Meal, Recipe, RecipeProp } from "../utils/types";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import getIngredientArray from "../utils/getIngredientArray";
+import useLocalStorage from "../hooks/useLocalStorage";
 
 export default function Recipe({ isRandom = false }: RecipeProp) {
   const { idMeal } = useParams();
+
+  //checks if the meal is in the favorites, grab from storage and save to idlist
+  const [favorites, setFavorites] = useLocalStorage<Meal[]>("favorite", []);
+  const [isFavorite, setIsFavorite] = useState<boolean>(false);
 
   //grab recipe from api
   const url = generateURL(!isRandom ? `lookup.php?i=${idMeal}` : `random.php`);
@@ -41,6 +46,23 @@ export default function Recipe({ isRandom = false }: RecipeProp) {
     [ingredients]
   );
 
+  //keeps track of whether item is in favorites and updates state
+  useEffect(() => {
+    if (!recipeData) return;
+    const favoriteIds = favorites.map((fav) => fav.idMeal);
+    setIsFavorite(favoriteIds.includes(recipeData.idMeal));
+  }, [favorites, recipeData]);
+
+  //toggles favorite
+  const toggleFavorite = useCallback(() => {
+    if (!recipeData) return;
+    return isFavorite
+      ? setFavorites((prev) =>
+          prev.filter((item) => item.idMeal != recipeData.idMeal)
+        )
+      : setFavorites((prev) => [...prev, recipeData]);
+  }, [recipeData, isFavorite, setFavorites]);
+
   return (
     <>
       {loading && <p>page loading...</p>}
@@ -48,6 +70,10 @@ export default function Recipe({ isRandom = false }: RecipeProp) {
       {recipeData && (
         <div>
           <h2>{recipeData.strMeal}</h2>
+          {isFavorite && <p>Meal is in favorites</p>}
+          <button type="button" onClick={toggleFavorite}>
+            Store to Favorites
+          </button>
           {recipeData.strMealThumb && (
             <img
               src={recipeData.strMealThumb}
