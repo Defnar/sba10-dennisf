@@ -9,6 +9,17 @@ export interface CategoryData {
     categories: Categories[];
 }
 
+export interface MealList {
+    meals: Meal[]
+}
+
+export interface Meal {
+
+    strMeal: string,
+    strMealThumb: string,
+    idMeal: string
+}
+
 
 type Region = {
     strArea: string;
@@ -18,6 +29,12 @@ export interface RegionData {
     meals: Region[];
 }
 
+
+export type ListType = "region" | "category"
+
+export type ResultListProp = {
+    listType: ListType
+}
 
 export interface RecipeData {
   idMeal: string;

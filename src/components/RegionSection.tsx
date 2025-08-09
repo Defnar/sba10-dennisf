@@ -10,6 +10,7 @@ export default function RegionSection() {
 
   const { loading, data, error } = useFetch<RegionData>(url);
 
+  //creates regions as list of links
   const regionSetup = useMemo(() => {
     if (data) {
       return data.meals.map((region) => (
