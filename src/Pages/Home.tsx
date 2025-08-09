@@ -10,6 +10,7 @@ export default function HomePage() {
   //turn letters into buttons for search by starting letter
   const letterButtons = useMemo(
     () => letterArray.map((letter) =><Link key={letter} to={`/list/${letter.toLowerCase()}`}>{letter}</Link>),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     []
   );
 
