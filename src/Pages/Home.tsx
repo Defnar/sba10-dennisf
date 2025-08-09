@@ -1,11 +1,18 @@
 import { useMemo } from "react";
 import RegionSection from "../components/RegionSection";
 import CategorySection from "../components/CategorySection";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 export default function Home() {
   //am lazy
   const letterArray = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 
+  const navigate = useNavigate();
+
+  const handleNavigate = (page: string) => {
+    navigate(page);
+  }
+
+  const searchPage = "/search/"
 
   //turn letters into buttons for search by starting letter
   const letterButtons = useMemo(
@@ -17,6 +24,7 @@ export default function Home() {
   //fetch data to show in each home page region
   return (
     <div>
+      <button type="button" onClick={() => handleNavigate(searchPage)}>Search for a recipe</button>
       <button type="button">Surprise Me</button>
       <h2>Unsure, find recipes by letter</h2>
       {letterButtons}

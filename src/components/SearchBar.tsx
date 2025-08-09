@@ -13,8 +13,9 @@ export default function SearchBar({ currentSearch, debounceTimer = 0, isDynamic,
   //debounce timer, if the bar isn't dynamic this sets to -1
   useDebounce({ input: search, timer: isDynamic? debounceTimer : -1, timeoutFunction: currentSearch });
 
-const submitSearch = (e: React.KeyboardEvent | React.MouseEvent<HTMLButtonElement>) => {
-  if (e instanceof KeyboardEvent && e.key === "Enter" || e instanceof MouseEvent) {
+const submitSearch = (e: React.KeyboardEvent<HTMLInputElement> | React.MouseEvent<HTMLButtonElement>) => {
+
+  if (e.type==="keydown" && (e as React.KeyboardEvent).key === "Enter" || e.type==="click") {
     currentSearch(search);
   }
 }

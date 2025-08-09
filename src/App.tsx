@@ -4,11 +4,12 @@ import Home from "./Pages/Home";
 import ResultList from "./Pages/ResultList";
 import Recipe from "./Pages/Recipe";
 import Header from "./components/Header";
+import Search from "./Pages/Search";
 
 function App() {
   return (
     <>
-    <Header/>
+      <Header />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route
@@ -19,9 +20,8 @@ function App() {
           path="/category/:category"
           element={<ResultList listType="category" />}
         />
-        <Route
-        path="/recipe/:idMeal"
-        element={<Recipe />} />
+        <Route path="/recipe/:idMeal" element={<Recipe />} />
+        <Route path="/search/" element={<Search />} />
       </Routes>
     </>
   );
