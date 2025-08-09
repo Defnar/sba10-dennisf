@@ -1,15 +1,20 @@
 import { useEffect, useState } from "react";
 
-export default function useFetch<APIData>(url: string) {
+export default function useFetch<APIData>(url: string | null) {
   const [loading, setLoading] = useState<boolean>(false);
   const [data, setData] = useState<APIData | null>(null);
   const [error, setError] = useState<string | null>(null);
 
+ 
+
   //fetch data with abort signal timeout
   useEffect(() => {
-    setLoading(true);
+    //if url is empty, immediately exits
+    if(!url) return
+    
     setError(null);
     setData(null);
+    setLoading(true);
 
     //sets up api timeouts and user aborts
     const controller = new AbortController();
@@ -17,6 +22,7 @@ export default function useFetch<APIData>(url: string) {
       controller.abort();
     }, 5000);
 
+    //fetches data or returns error
     const fetchData = async () => {
       try {
         const response = await fetch(url, { signal: controller.signal });

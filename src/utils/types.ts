@@ -95,5 +95,7 @@ export interface Meal {
 
 
 export interface SearchBarProps {
-    currentSearch: () => void
+    currentSearch: (input: string) => void,
+    debounceTimer?: number
+    isDynamic: boolean
 }
