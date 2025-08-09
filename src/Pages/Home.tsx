@@ -2,7 +2,7 @@ import { useMemo } from "react";
 import RegionSection from "../components/RegionSection";
 import CategorySection from "../components/CategorySection";
 import { Link } from "react-router-dom";
-export default function HomePage() {
+export default function Home() {
   //am lazy
   const letterArray = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 

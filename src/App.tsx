@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import HomePage from "./Pages/Home";
+import Home from "./Pages/Home";
 import ResultList from "./Pages/ResultList";
 import Recipe from "./Pages/Recipe";
 import Header from "./components/Header";
@@ -10,7 +10,7 @@ function App() {
     <>
     <Header/>
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route path="/" element={<Home />} />
         <Route
           path="/region/:region"
           element={<ResultList listType="region" />}
