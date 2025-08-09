@@ -6,6 +6,7 @@ import Header from "./components/Header";
 import Search from "./Pages/Search";
 import { useContext } from "react";
 import { ThemeContext } from "./contexts/contexts";
+import FavoritesPage from "./Pages/FavoritesPage";
 
 function App() {
 
@@ -31,6 +32,7 @@ function App() {
         <Route path="/recipe/:idMeal" element={<Recipe />} />
         <Route path="/search/" element={<Search />} />
         <Route path="/random" element={<Recipe isRandom={true} />} />
+        <Route path="/favorites" element={<FavoritesPage />} />
       </Routes>
     </div>
   );

@@ -12,11 +12,17 @@ export default function Header() {
     const navHome = () => {
         navigate("/")
     }
+    
+    const navFavorite = () => {
+        navigate("/favorites")
+    }
 
     return (
-        <div>
+        <div className="border-solid border-black w-full">
             <button type="button" onClick={handleBack}>Back</button>
             <button type="button" onClick={navHome}>Home</button>
+            <h1>Recipes</h1>
+            <button type="button" onClick={navFavorite}>Favorites</button>
         </div>
     )
 }

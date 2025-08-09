@@ -10,7 +10,7 @@ export default function Recipe({ isRandom = false }: RecipeProp) {
   const { idMeal } = useParams();
 
   //checks if the meal is in the favorites, grab from storage and save to idlist
-  const [favorites, setFavorites] = useLocalStorage<Meal[]>("favorite", []);
+  const [favorites, setFavorites] = useLocalStorage<Meal[]>("favorites", []);
   const [isFavorite, setIsFavorite] = useState<boolean>(false);
 
   //grab recipe from api
