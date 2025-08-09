@@ -9,9 +9,14 @@ export default function Header() {
         navigate(-1);
     }
 
+    const navHome = () => {
+        navigate("/")
+    }
+
     return (
         <div>
             <button type="button" onClick={handleBack}>Back</button>
+            <button type="button" onClick={navHome}>Home</button>
         </div>
     )
 }
