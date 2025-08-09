@@ -9,7 +9,6 @@ export default function useFetch<APIData>(url: string | null) {
   useEffect(() => {
     setError(null);
     setData(null);
-    console.log(1, error);
     let isMounted = true;
 
     //if url is empty, immediately exits
@@ -51,6 +50,5 @@ export default function useFetch<APIData>(url: string | null) {
     };
   }, [error, url]);
 
-  console.log(2, loading, data, error);
   return { loading, data, error };
 }
