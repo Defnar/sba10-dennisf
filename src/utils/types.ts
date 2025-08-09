@@ -91,3 +91,9 @@ export interface Meal {
   strCreativeCommonsConfirmed: string | null;
   dateModified: string | null;
 }
+
+
+
+export interface SearchBarProps {
+    currentSearch: () => void
+}
