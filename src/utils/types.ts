@@ -41,7 +41,7 @@ export interface Meal {
   strCategory: string;
   strArea: string | null;
   strInstructions: string | null;
-  strMealThumb: string;
+  strMealThumb: string | null;
   strTags: string | null;
   strYoutube: string | null;
   strIngredient1: string | null;
@@ -99,4 +99,11 @@ export interface SearchBarProps {
 
 export interface RecipeProp {
   isRandom?: boolean;
+}
+
+export type ThemeContextType = "light" | "dark"
+
+export interface ThemeContextProvider{
+  theme: ThemeContextType;
+  toggleTheme: (theme: ThemeContextType) => void;
 }

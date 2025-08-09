@@ -26,18 +26,19 @@ export default function ResultList({ listType }: ResultListProp) {
   const { loading, data, error } = useFetch<Recipe>(url);
 
   const filteredList = useMemo(() => {
-    if (data)
+    if (data && data.meals)
       return data.meals.filter((recipe) => {
         return recipe.strMeal
           .toLowerCase()
           .includes(searchResults.toLowerCase().trim());
       });
+    else if (data && !data.meals) return [];
   }, [data, searchResults]);
 
   //create a list of categories or regions to render
   const listSetup = useMemo(() => {
     if (loading) return <p>Loading section...</p>;
-    if (filteredList) {
+    if (filteredList && filteredList.length > 0) {
       return filteredList.map((meal) => (
         <Link key={meal.idMeal} to={`/recipe/${meal.idMeal}`}>
           <h3>{meal.strMeal}</h3>
@@ -46,6 +47,8 @@ export default function ResultList({ listType }: ResultListProp) {
           )}
         </Link>
       ));
+    } else if (filteredList && filteredList.length === 0) {
+      return <p>no recipes found</p>;
     }
 
     if (error) return <p>{error}</p>;
