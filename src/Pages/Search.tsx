@@ -24,12 +24,16 @@ export default function Search() {
     if (error) return <p>{error}</p>;
     if (data) {
       return data.meals.map((recipe) => {
-        return <li key={recipe.idMeal}>
-          <Link to={`/recipe/${recipe.idMeal}`}>
-            <h2>{recipe.strMeal}</h2>
-            <img src={recipe.strMealThumb} alt={recipe.strMeal} />
-          </Link>
-        </li>;
+        return (
+          <li key={recipe.idMeal}>
+            <Link to={`/recipe/${recipe.idMeal}`}>
+              <h2>{recipe.strMeal}</h2>
+              {recipe.strMealThumb && (
+                <img src={recipe.strMealThumb} alt={recipe.strMeal} />
+              )}
+            </Link>
+          </li>
+        );
       });
     }
   }, [searchValue, data, loading, error]);

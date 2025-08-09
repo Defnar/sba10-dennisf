@@ -27,10 +27,11 @@ export interface IngredientMeasure {
   measures: string | null;
 }
 
-export type ListType = "region" | "category";
+export type ListType = "region" | "category" | "letter";
 
 export type ResultListProp = {
   listType: ListType;
+  lettter?: string
 };
 
 export interface Meal {

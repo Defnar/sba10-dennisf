@@ -20,6 +20,7 @@ function App() {
           path="/category/:category"
           element={<ResultList listType="category" />}
         />
+        <Route path="/list/:letter" element={<ResultList listType="letter" />} />
         <Route path="/recipe/:idMeal" element={<Recipe />} />
         <Route path="/search/" element={<Search />} />
         <Route path="/random" element={<Recipe isRandom={true} />} />

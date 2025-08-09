@@ -24,7 +24,6 @@ export default function Recipe({ isRandom = false }: RecipeProp) {
     [recipeData]
   );
 
-
   //creates a visual display out of the ingredients and measures array
   const ingredientSection = useMemo(
     () =>
@@ -49,10 +48,12 @@ export default function Recipe({ isRandom = false }: RecipeProp) {
       {recipeData && (
         <div>
           <h2>{recipeData.strMeal}</h2>
-          <img
-            src={recipeData.strMealThumb}
-            alt={`image of ${recipeData.strMeal}`}
-          />
+          {recipeData.strMealThumb && (
+            <img
+              src={recipeData.strMealThumb}
+              alt={`image of ${recipeData.strMeal}`}
+            />
+          )}
           <section>{ingredientSection}</section>
           <p>{recipeData.strInstructions}</p>
         </div>

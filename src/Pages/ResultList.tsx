@@ -5,7 +5,7 @@ import generateURL from "../utils/generateURL";
 import useFetch from "../hooks/useFetch";
 
 export default function ResultList({ listType }: ResultListProp) {
-  const { region, category } = useParams();
+  const { region, category, letter } = useParams();
 
   const endOfUrl = useMemo(() => {
     switch (listType) {
@@ -13,8 +13,10 @@ export default function ResultList({ listType }: ResultListProp) {
         return `filter.php?c=${category}`;
       case "region":
         return `filter.php?a=${region}`;
+        case "letter":
+          return `search.php?f=${letter}`
     }
-  }, [category, region, listType]);
+  }, [category, region, listType, letter]);
 
   //api call to grab list of whichever we need here
   const url = generateURL(endOfUrl);
