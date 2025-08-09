@@ -21,6 +21,7 @@ export interface RegionData {
   meals: Region[];
 }
 
+
 export interface IngredientMeasure {
   ingredients: string;
   measures: string | null;

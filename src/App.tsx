@@ -22,6 +22,7 @@ function App() {
         />
         <Route path="/recipe/:idMeal" element={<Recipe />} />
         <Route path="/search/" element={<Search />} />
+        <Route path="/random" element={<Recipe isRandom={true} />} />
       </Routes>
     </>
   );
