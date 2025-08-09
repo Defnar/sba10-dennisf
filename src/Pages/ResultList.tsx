@@ -22,6 +22,8 @@ export default function ResultList({ listType }: ResultListProp) {
 
   //create a list of categories or regions to render
   const listSetup = useMemo(() => {
+    if (loading) return <p>Loading section...</p>;
+    if (error) return <p>{error}</p>;
     if (data) {
       return data.meals.map((meal) => (
         <Link key={meal.idMeal} to={`/recipe/${meal.idMeal}`}>
@@ -29,12 +31,6 @@ export default function ResultList({ listType }: ResultListProp) {
           <img src={meal.strMealThumb} alt={`image of ${meal.strMeal}`} />
         </Link>
       ));
-    }
-    if (loading) {
-      return <p>Loading section...</p>;
-    }
-    if (error) {
-      return <p>{error}</p>;
     }
   }, [data, error, loading]);
 

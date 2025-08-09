@@ -1,40 +1,36 @@
-interface Categories  {
-    idCategory: string,
-    strCategory: string,
-    strCategoryThumb: string,
-    strCategoryDescription: string
+interface Categories {
+  idCategory: string;
+  strCategory: string;
+  strCategoryThumb: string;
+  strCategoryDescription: string;
 }
 
 export interface CategoryData {
-    categories: Categories[];
-}
-
-export interface MealList {
-    meals: Meal[]
+  categories: Categories[];
 }
 
 export interface Recipe {
-    meals: Meal[]
+  meals: Meal[];
 }
 
 type Region = {
-    strArea: string;
-}
+  strArea: string;
+};
 
 export interface RegionData {
-    meals: Region[];
+  meals: Region[];
 }
 
 export interface IngredientMeasure {
-    ingredients: string,
-    measures: string | null
+  ingredients: string;
+  measures: string | null;
 }
 
-export type ListType = "region" | "category"
+export type ListType = "region" | "category";
 
 export type ResultListProp = {
-    listType: ListType
-}
+  listType: ListType;
+};
 
 export interface Meal {
   idMeal: string;
@@ -43,7 +39,7 @@ export interface Meal {
   strCategory: string;
   strArea: string | null;
   strInstructions: string | null;
-  strMealThumb: string
+  strMealThumb: string;
   strTags: string | null;
   strYoutube: string | null;
   strIngredient1: string | null;
@@ -92,10 +88,9 @@ export interface Meal {
   dateModified: string | null;
 }
 
-
-
 export interface SearchBarProps {
-    currentSearch: (input: string) => void,
-    debounceTimer?: number
-    isDynamic: boolean
+  currentSearch: (input: string) => void;
+  debounceTimer?: number;
+  isDynamic: boolean;
+  displaySearchButton: boolean;
 }
