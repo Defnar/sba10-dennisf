@@ -101,9 +101,16 @@ export interface RecipeProp {
   isRandom?: boolean;
 }
 
-export type ThemeContextType = "light" | "dark"
+export type ThemeContextType = "light" | "dark" | "system"
 
 export interface ThemeContextProvider{
   theme: ThemeContextType;
   toggleTheme: (theme: ThemeContextType) => void;
+}
+
+
+export interface NavBarDropDownProps {
+  navHome: () => void;
+  navFavorite: () => void;
+  closeDropDown: () => void;
 }

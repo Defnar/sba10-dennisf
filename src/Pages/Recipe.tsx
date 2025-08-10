@@ -15,10 +15,7 @@ export default function Recipe({ isRandom = false }: RecipeProp) {
 
   //grab recipe from api
   const url = generateURL(!isRandom ? `lookup.php?i=${idMeal}` : `random.php`);
-  console.log(url);
   const { loading, data, error } = useFetch<Recipe>(url);
-
-  console.log(data);
 
   //grabs the meals array
   const recipeData = useMemo(() => (data ? data.meals[0] : null), [data]);

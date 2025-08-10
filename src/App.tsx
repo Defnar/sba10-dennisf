@@ -4,16 +4,27 @@ import ResultList from "./Pages/ResultList";
 import Recipe from "./Pages/Recipe";
 import Header from "./components/Header";
 import Search from "./Pages/Search";
-import { useContext } from "react";
+import { useContext, useMemo } from "react";
 import { ThemeContext } from "./contexts/contexts";
 import FavoritesPage from "./Pages/FavoritesPage";
 
 function App() {
+  const { theme } = useContext(ThemeContext);
 
-  const {theme} = useContext(ThemeContext);
+
+  //ah yes, a ternary in a ternary.  my brain ;-;
+  const currentTheme = useMemo(
+    () =>
+      theme === "system"
+        ? window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? "dark"
+          : "light"
+        : theme,
+    [theme]
+  );
 
   return (
-    <div data-theme={theme}>
+    <div className="w-full" data-theme={currentTheme}>
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
