@@ -15,7 +15,7 @@ export default function RegionSection() {
     if (data) {
       return data.meals.map((region) => (
         <Link key={region.strArea}
-        className="w-30 h-auto text-center hover:bg-gray-400 bg-gray-200 shadow-md"
+        className="w-30 h-auto rounded-sm text-center hover:bg-gray-400 bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-600 shadow-md"
         to={`/region/${region.strArea}`}>
           {region.strArea}
         </Link>

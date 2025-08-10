@@ -40,7 +40,7 @@ export default function SearchBar({
       <div className="relative">
         <input
           type="text"
-          className="w-50 md:w-150 h-10 border border-gray-300 rounded-md shadow-md px-4"
+          className="w-50 md:w-150 h-10 border border-gray-300 dark:border-gray-800 rounded-md shadow-md px-4"
           placeholder="search for a recipe..."
           value={search}
           onChange={handleChange}
@@ -57,7 +57,7 @@ export default function SearchBar({
       {displaySearchButton && (
         <button
           type="button"
-          className="bg-amber-400 w-20 rounded-md hover:bg-amber-600"
+          className="bg-amber-400 w-20 rounded-md hover:bg-amber-600 dark:bg-amber-800 dark:hover:bg-amber-700"
           onClick={submitSearch}
         >
           Search

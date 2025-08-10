@@ -21,7 +21,7 @@ export default function FavoritesPage() {
     return favorites.map((recipe) => {
       return (
         <li
-          className="hover:bg-gray-200 rounded-md max-w-xs"
+          className="hover:bg-gray-200 dark:hover:bg-gray-700 rounded-md max-w-xs"
           key={recipe.idMeal}
         >
           <Link
@@ -38,7 +38,9 @@ export default function FavoritesPage() {
                 alt={recipe.strMeal}
               />
             )}
-            <button onClick={(e) => {
+            <button 
+            className="hover:text-red-700 dark:hover:text-red-300 mt-4"
+            onClick={(e) => {
               e.stopPropagation();
               e.preventDefault();
               removeFavorite(recipe.idMeal)}}>

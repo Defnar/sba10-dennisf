@@ -82,7 +82,7 @@ export default function Recipe({ isRandom = false }: RecipeProp) {
             )}
             <div className="flex flex-col gap-20">
               <section>{ingredientSection}</section>
-              <p className="text-gray-800">{recipeData.strInstructions}</p>
+              <p className="text-gray-800 dark:text-gray-200">{recipeData.strInstructions}</p>
             </div>
           </div>
         </div>

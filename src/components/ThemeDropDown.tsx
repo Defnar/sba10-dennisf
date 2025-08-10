@@ -19,12 +19,12 @@ export default function ThemeDropDown({ closeTheme }: ThemeDropDownProp) {
     const themeSet: ThemeContextType[] = ["light", "dark", "system"];
 
     return themeSet.map((item) => (
-      <button className="flex flex-row justify-center hover:cursor-pointer w-full hover:bg-blue-200" key={item} onClick={() => handleThemeChange(item)}>
+      <button className="flex flex-row justify-center hover:cursor-pointer w-full hover:bg-blue-200 dark:hover:bg-blue-800 dark:bg-gray-900" key={item} onClick={() => handleThemeChange(item)}>
         {item === theme && <CheckCircleIcon height={24} width={24}/>}
         {item}
       </button>
     ));
   }, [closeTheme, theme, toggleTheme]);
 
-  return <div className="absolute top-full right-5 bg-white border rounded w-20 flex flex-col" ref={ref}>{buildButtons}</div>;
+  return <div className="absolute top-full right-0 bg-white border rounded w-20 flex flex-col dark:bg-grey-800" ref={ref}>{buildButtons}</div>;
 }

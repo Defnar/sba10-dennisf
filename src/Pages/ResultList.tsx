@@ -50,7 +50,7 @@ export default function ResultList({ listType }: ResultListProp) {
       return filteredList.map((meal) => (
         <li
           key={meal.idMeal}
-          className="group hover:bg-gray-200 rounded-md max-w-xs relative"
+          className="group hover:bg-gray-200 dark:hover:bg-gray-700 rounded-md max-w-xs relative"
         >
           <button
             className="hidden group-hover:block absolute top-2 right-2"

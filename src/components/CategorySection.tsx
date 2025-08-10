@@ -15,7 +15,7 @@ export default function CategorySection() {
       return data.categories.map((category) => (
         <Link
           key={category.idCategory}
-          className="flex flex-col md:flex-row hover:bg-gray-200 rounded-md shadow-sm gap-1"
+          className="flex flex-col md:flex-row hover:bg-gray-200 dark:hover:bg-gray-700 rounded-md shadow-sm gap-1"
           to={`/category/${category.strCategory}`}
         >
           <img

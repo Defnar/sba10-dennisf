@@ -24,7 +24,7 @@ function App() {
   );
 
   return (
-    <div className="w-full" data-theme={currentTheme}>
+    <div className="size-full min-h-screen dark:bg-black dark:text-white" data-theme={currentTheme}>
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />

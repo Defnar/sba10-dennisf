@@ -36,7 +36,7 @@ export default function Search() {
       return data.meals.map((recipe) => {
         return (
           <li
-            className="group relative hover:bg-gray-200 rounded-md max-w-xs"
+            className="group relative hover:bg-gray-200 dark:hover:bg-gray-700 rounded-md max-w-xs"
             key={recipe.idMeal}
           >
             <button

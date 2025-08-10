@@ -32,6 +32,8 @@ export default function Header() {
     navigate("/favorites");
     closeDropDown();
   };
+  
+  const navLinkStyling = "hover:bg-blue-200 dark:hover:bg-blue-700 w-full rounded-sm px-2"
 
   return (
     <div className="w-full flex items-center flex-row px-12 py-6 justify-between lg:relative">
@@ -63,15 +65,15 @@ export default function Header() {
         )}
       </nav>
       <nav className="hidden md:flex gap-5 shrink md:mr-40 lg:absolute lg:right-5">
-        <button type="button" className="hover:bg-blue-200 w-full rounded-sm" onClick={navHome}>
+        <button type="button" className={navLinkStyling} onClick={navHome}>
           Home
         </button>
         <p>|</p>
-        <button type="button" className="hover:bg-blue-200 w-full rounded-sm" onClick={navFavorite}>
+        <button type="button" className={navLinkStyling} onClick={navFavorite}>
           Favorites
         </button>
       </nav>
-      <div>
+      <div className="relative">
         <button
           type="button"
           className="hover:cursor-pointer"

@@ -42,10 +42,11 @@ export default function Home() {
   );
 
   const buttonStyles =
-    "text-black font-semibold w-40 py-2 bg-amber-400 hover:bg-amber-600 hover:cursor-pointer my-2 self-center rounded-md shadow-md";
+    "font-semibold w-40 py-2 bg-amber-400 hover:bg-amber-600 dark:bg-amber-800 dark:hover:bg-amber-700 hover:cursor-pointer my-2 self-center rounded-md shadow-md";
   //fetch data to show in each home page region
   return (
-    <div className="flex flex-col gap-4 text-gray-900">
+    <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-4 md:flex-row md:justify-center">
       <button
         type="button"
         className={buttonStyles}
@@ -60,6 +61,7 @@ export default function Home() {
       >
         Surprise Me
       </button>
+      </div>
       <p className="text-3xl text-center text-black">
         Or, select from a region or category
       </p>
