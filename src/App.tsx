@@ -8,6 +8,7 @@ import { useContext, useMemo } from "react";
 import { ThemeContext } from "./contexts/contexts";
 import FavoritesPage from "./Pages/FavoritesPage";
 
+
 function App() {
   const { theme } = useContext(ThemeContext);
 
