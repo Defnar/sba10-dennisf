@@ -2,6 +2,7 @@ import React, { useMemo } from "react";
 import RegionSection from "../components/RegionSection";
 import CategorySection from "../components/CategorySection";
 import { Link, useNavigate } from "react-router-dom";
+import AccordionSection from "../components/AccordionSection";
 
 export default function Home() {
   //am lazy
@@ -27,7 +28,10 @@ export default function Home() {
     () =>
       letterArray.map((letter) => (
         <React.Fragment key={letter}>
-          <Link className="hover:cursor-pointer w-4 text-center hover:bg-amber-400" to={`/list/${letter.toLowerCase()}`}>
+          <Link
+            className="hover:cursor-pointer w-4 text-center hover:bg-amber-400"
+            to={`/list/${letter.toLowerCase()}`}
+          >
             {letter}
           </Link>{" "}
           {letter != "Z" && <p> | </p>}
@@ -37,28 +41,35 @@ export default function Home() {
     []
   );
 
-  const buttonStyles = "text-black font-semibold w-40 py-2 bg-amber-400 hover:bg-amber-600 hover:cursor-pointer my-2 self-center rounded-md shadow-md"
+  const buttonStyles =
+    "text-black font-semibold w-40 py-2 bg-amber-400 hover:bg-amber-600 hover:cursor-pointer my-2 self-center rounded-md shadow-md";
   //fetch data to show in each home page region
   return (
-    <div className="flex flex-col text-gray-900">
+    <div className="flex flex-col gap-4 text-gray-900">
       <button
-        type="button" className={buttonStyles}
+        type="button"
+        className={buttonStyles}
         onClick={() => handleNavigate(navigatePages.searchPage)}
       >
         Search for a recipe
       </button>
       <button
-        type="button" className={buttonStyles}
+        type="button"
+        className={buttonStyles}
         onClick={() => handleNavigate(navigatePages.randomPage)}
       >
         Surprise Me
       </button>
-      <p className="text-3xl text-center text-black">Or, select from a region or category</p>
-      <h2>Region</h2>
-      <RegionSection />
-      <h2>Category</h2>
-      <CategorySection />
-      
+        <p className="text-3xl text-center text-black">
+          Or, select from a region or category
+        </p>
+        <AccordionSection title="Region">
+        <RegionSection />
+        </AccordionSection>
+        <AccordionSection title="Category">
+        <CategorySection />
+        </AccordionSection>
+
       <h2>Unsure, find recipes by letter</h2>
       <div className="flex flex-row gap-1">{letterButtons}</div>
     </div>
