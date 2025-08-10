@@ -60,34 +60,35 @@ export default function ResultList({ listType }: ResultListProp) {
     if (loading) return <p>Loading section...</p>;
     if (filteredList && filteredList.length > 0) {
       return filteredList.map((meal) => (
-        <div key={meal.idMeal}>
+      <li key={meal.idMeal} className="hover:bg-gray-200 rounded-md max-w-xs">
           {/*checking meal ids against favorite ids we populated earlier*/}
           {favoriteIds.includes(meal.idMeal) && <p>Currently in favorites</p>}
           <button onClick={() => toggleFavorite(meal)}>Toggle favorites</button>
-          <Link to={`/recipe/${meal.idMeal}`}>
-            <h3>{meal.strMeal}</h3>
+          <Link className="flex flex-col px-10 max-w-300 py-5" to={`/recipe/${meal.idMeal}`}>
+            <h2 className="text-xlg text-center font-semibold">{meal.strMeal}</h2>
             {meal.strMealThumb && (
-              <img src={meal.strMealThumb} alt={`image of ${meal.strMeal}`} />
+              <img src={meal.strMealThumb} className="rounded-md max-w-xs" alt={`image of ${meal.strMeal}`} />
             )}
           </Link>
-        </div>
+        </li>
       ));
     } else if (filteredList && filteredList.length === 0) {
-      return <p>no recipes found</p>;
+      return <p className="font-semibold text-xlg text-center">no recipes found</p>;
     }
 
     if (error) return <p>{error}</p>;
   }, [loading, filteredList, error, favoriteIds, toggleFavorite]);
 
   return (
-    <div>
+    <div className="flex flex-col gap-5">
       <SearchBar
         currentSearch={setSearchResults}
         debounceTimer={250}
         isDynamic={true}
         displaySearchButton={false}
       />
-      {listSetup}
+      <ul className="flex flex-row flex-wrap justify-center items-center gap-5 list-none">
+      {listSetup} </ul>
     </div>
   );
 }

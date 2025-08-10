@@ -34,7 +34,7 @@ export default function Header() {
   };
 
   return (
-    <div className="w-full flex items-center flex-row px-12 py-6 justify-between">
+    <div className="w-full flex items-center flex-row px-12 py-6 justify-between lg:relative">
       <button
         type="button"
         className="hover:cursor-pointer"
@@ -42,7 +42,7 @@ export default function Header() {
       >
         <ArrowLeftIcon width={24} height={24} />{" "}
       </button>
-      <h1 className="text-3xl font-bold md:grow md:text-center">Recipes</h1>
+      <h1 className="text-3xl font-bold md:grow md:text-center lg:absolute lg:left-1/2 lg:-translate-x-1/2">Recipes</h1>
       <nav className="relative md:hidden">
         <Bars3Icon
           height={24}
@@ -62,7 +62,7 @@ export default function Header() {
           />
         )}
       </nav>
-      <nav className="hidden md:flex gap-5 shrink md:mr-40">
+      <nav className="hidden md:flex gap-5 shrink md:mr-40 lg:absolute lg:right-5">
         <button type="button" className="hover:bg-blue-200 w-full rounded-sm" onClick={navHome}>
           Home
         </button>
@@ -71,7 +71,7 @@ export default function Header() {
           Favorites
         </button>
       </nav>
-      <div className="relative">
+      <div>
         <button
           type="button"
           className="hover:cursor-pointer"

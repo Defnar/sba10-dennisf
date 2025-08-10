@@ -30,7 +30,7 @@ export default function Search() {
             <Link className="flex flex-col px-10 max-w-300 py-5" to={`/recipe/${recipe.idMeal}`}>
               <h2 className="text-xlg text-center font-semibold">{recipe.strMeal}</h2>
               {recipe.strMealThumb && (
-                <img src={recipe.strMealThumb} className="w-auto rounded-md max-w-xs" alt={recipe.strMeal} />
+                <img src={recipe.strMealThumb} className="object-cover rounded-md max-w-xs" alt={recipe.strMeal} />
               )}
             </Link>
           </li>
