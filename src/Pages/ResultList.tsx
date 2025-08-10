@@ -65,7 +65,7 @@ export default function ResultList({ listType }: ResultListProp) {
           {favoriteIds.includes(meal.idMeal) && <p>Currently in favorites</p>}
           <button onClick={() => toggleFavorite(meal)}>Toggle favorites</button>
           <Link className="flex flex-col px-10 max-w-300 py-5" to={`/recipe/${meal.idMeal}`}>
-            <h2 className="text-xlg text-center font-semibold">{meal.strMeal}</h2>
+            <h2 className="text-xl text-center font-semibold">{meal.strMeal}</h2>
             {meal.strMealThumb && (
               <img src={meal.strMealThumb} className="rounded-md max-w-xs" alt={`image of ${meal.strMeal}`} />
             )}
@@ -73,7 +73,7 @@ export default function ResultList({ listType }: ResultListProp) {
         </li>
       ));
     } else if (filteredList && filteredList.length === 0) {
-      return <p className="font-semibold text-xlg text-center">no recipes found</p>;
+      return <p className="font-semibold text-xl text-center">no recipes found</p>;
     }
 
     if (error) return <p>{error}</p>;

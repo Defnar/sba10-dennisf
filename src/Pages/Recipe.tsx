@@ -33,7 +33,9 @@ export default function Recipe({ isRandom = false }: RecipeProp) {
         ingredients.map((item, index) => {
           return (
             <div key={index}>
-              <p>{item.measures}</p> <p>{item.ingredients}</p>
+              <p>
+                {item.measures} {item.ingredients}
+              </p>
             </div>
           );
         })
@@ -65,20 +67,24 @@ export default function Recipe({ isRandom = false }: RecipeProp) {
       {loading && <p>page loading...</p>}
       {error && <p>{error}</p>}
       {recipeData && (
-        <div>
-          <h2>{recipeData.strMeal}</h2>
-          {isFavorite && <p>Meal is in favorites</p>}
+        <div className="flex flex-col items-center gap-10 px-10 py-5">
+          <h2 className="font-semibold text-2xl">{recipeData.strMeal}</h2>
           <button type="button" onClick={toggleFavorite}>
-            Store to Favorites
+            {isFavorite ? "Add to" : "Remove from"} Favorites
           </button>
-          {recipeData.strMealThumb && (
-            <img
-              src={recipeData.strMealThumb}
-              alt={`image of ${recipeData.strMeal}`}
-            />
-          )}
-          <section>{ingredientSection}</section>
-          <p>{recipeData.strInstructions}</p>
+          <div className="flex flex-col items-center gap-10 lg:flex-row">
+            {recipeData.strMealThumb && (
+              <img
+                className="object-cover rounded-md"
+                src={recipeData.strMealThumb}
+                alt={`image of ${recipeData.strMeal}`}
+              />
+            )}
+            <div className="flex flex-col gap-20">
+              <section>{ingredientSection}</section>
+              <p className="text-gray-800">{recipeData.strInstructions}</p>
+            </div>
+          </div>
         </div>
       )}
     </>

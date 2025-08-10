@@ -28,7 +28,7 @@ export default function Search() {
         return (
           <li className="hover:bg-gray-200 rounded-md max-w-xs" key={recipe.idMeal}>
             <Link className="flex flex-col px-10 max-w-300 py-5" to={`/recipe/${recipe.idMeal}`}>
-              <h2 className="text-xlg text-center font-semibold">{recipe.strMeal}</h2>
+              <h2 className="text-2xl text-center font-semibold">{recipe.strMeal}</h2>
               {recipe.strMealThumb && (
                 <img src={recipe.strMealThumb} className="object-cover rounded-md max-w-xs" alt={recipe.strMeal} />
               )}
