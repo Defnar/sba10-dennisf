@@ -5,8 +5,9 @@ import generateURL from "../utils/generateURL";
 import useFetch from "../hooks/useFetch";
 import SearchBar from "../components/SearchBar";
 import { BookmarkIcon } from "@heroicons/react/24/solid";
-import {BookmarkSlashIcon} from "@heroicons/react/24/solid";
+import { BookmarkSlashIcon } from "@heroicons/react/24/solid";
 import { FavoritesContext } from "../contexts/contexts";
+import SpinnerWheel from "../components/SpinnerWheel";
 
 export default function ResultList({ listType }: ResultListProp) {
   const { region, category, letter } = useParams();
@@ -45,7 +46,7 @@ export default function ResultList({ listType }: ResultListProp) {
 
   //create a list of categories or regions to render
   const listSetup = useMemo(() => {
-    if (loading) return <p>Loading section...</p>;
+    if (loading) return <SpinnerWheel />;
     if (filteredList && filteredList.length > 0) {
       return filteredList.map((meal) => (
         <li
@@ -58,7 +59,11 @@ export default function ResultList({ listType }: ResultListProp) {
               toggleFavorite(meal);
             }}
           >
-            {favoriteIds.includes(meal.idMeal)? <BookmarkSlashIcon width={20} height={20}/> : <BookmarkIcon width={20} height={20}/>}
+            {favoriteIds.includes(meal.idMeal) ? (
+              <BookmarkSlashIcon width={20} height={20} />
+            ) : (
+              <BookmarkIcon width={20} height={20} />
+            )}
           </button>
           <Link
             className="flex flex-col px-10 max-w-300 py-5"
@@ -95,7 +100,7 @@ export default function ResultList({ listType }: ResultListProp) {
         displaySearchButton={false}
       />
       <ul className="flex flex-row flex-wrap justify-center items-center gap-5 list-none">
-        {listSetup}{" "}
+        {listSetup}
       </ul>
     </div>
   );

@@ -3,6 +3,7 @@ import useFetch from "../hooks/useFetch";
 import type { RegionData } from "../utils/types";
 import { Link } from "react-router-dom";
 import generateURL from "../utils/generateURL";
+import SpinnerWheel from "./SpinnerWheel";
 
 export default function RegionSection() {
   //create url to follow
@@ -22,7 +23,7 @@ export default function RegionSection() {
       ));
     }
     if (loading) {
-      return <p>Loading regions...</p>;
+      return <SpinnerWheel />;
     }
     if (error) {
       return <p>{error}</p>;

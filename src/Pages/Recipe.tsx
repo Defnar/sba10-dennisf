@@ -5,6 +5,7 @@ import type { Recipe, RecipeProp } from "../utils/types";
 import { useContext, useEffect, useMemo, useState } from "react";
 import getIngredientArray from "../utils/getIngredientArray";
 import { FavoritesContext } from "../contexts/contexts";
+import SpinnerWheel from "../components/SpinnerWheel";
 
 export default function Recipe({ isRandom = false }: RecipeProp) {
   const { idMeal } = useParams();
@@ -12,8 +13,8 @@ export default function Recipe({ isRandom = false }: RecipeProp) {
   //checks if the meal is in the favorites, grab from storage and save to idlist
   const [isFavorite, setIsFavorite] = useState<boolean>(false);
 
-
-  const {favorites, favoriteIds, toggleFavorite} = useContext(FavoritesContext)
+  const { favorites, favoriteIds, toggleFavorite } =
+    useContext(FavoritesContext);
 
   //grab recipe from api
   const url = generateURL(!isRandom ? `lookup.php?i=${idMeal}` : `random.php`);
@@ -53,10 +54,9 @@ export default function Recipe({ isRandom = false }: RecipeProp) {
     setIsFavorite(favoriteIds.includes(recipeData.idMeal));
   }, [favoriteIds, favorites, recipeData]);
 
- 
   return (
     <>
-      {loading && <p>page loading...</p>}
+      {loading && <SpinnerWheel />}
       {error && <p>{error}</p>}
       {recipeData && (
         <div className="flex flex-col items-center gap-10 px-10 py-5">
@@ -74,7 +74,9 @@ export default function Recipe({ isRandom = false }: RecipeProp) {
             )}
             <div className="flex flex-col gap-20">
               <section>{ingredientSection}</section>
-              <p className="text-gray-800 dark:text-gray-200">{recipeData.strInstructions}</p>
+              <p className="text-gray-800 dark:text-gray-200">
+                {recipeData.strInstructions}
+              </p>
             </div>
           </div>
         </div>

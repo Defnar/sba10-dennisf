@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { BookmarkSlashIcon } from "@heroicons/react/24/solid";
 import { BookmarkIcon } from "@heroicons/react/24/solid";
 import { FavoritesContext } from "../contexts/contexts";
+import SpinnerWheel from "../components/SpinnerWheel";
 
 export default function Search() {
   const [searchValue, setSearchValue] = useState<string>("");
@@ -30,7 +31,7 @@ export default function Search() {
           Please ensure the search bar is not empty
         </p>
       );
-    if (loading) return <p className="text-center">Loading page..</p>;
+    if (loading) return <SpinnerWheel />;
     if (error) return <p className="text-center">{error}</p>;
     if (data && data.meals) {
       return data.meals.map((recipe) => {
@@ -41,7 +42,10 @@ export default function Search() {
           >
             <button
               className="hidden group-hover:block absolute top-2 right-2"
-              onClick={() => {console.log("saving ", recipe); toggleFavorite(recipe)}}
+              onClick={() => {
+                console.log("saving ", recipe);
+                toggleFavorite(recipe);
+              }}
             >
               {favoriteIds.includes(recipe.idMeal) ? (
                 <BookmarkSlashIcon width={20} height={20} />

@@ -3,6 +3,7 @@ import useFetch from "../hooks/useFetch";
 import type { CategoryData } from "../utils/types";
 import { useMemo } from "react";
 import generateURL from "../utils/generateURL";
+import SpinnerWheel from "./SpinnerWheel";
 
 export default function CategorySection() {
   //create url to follow
@@ -34,7 +35,7 @@ export default function CategorySection() {
       ));
     }
     if (loading) {
-      return <p>Loading Categories...</p>;
+      return <SpinnerWheel />;
     }
     if (error) {
       return <p>{error}</p>;
