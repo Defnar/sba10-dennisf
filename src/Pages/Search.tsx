@@ -18,34 +18,39 @@ export default function Search() {
   const { loading, data, error } = useFetch<Recipe>(url);
 
   const searchResults = useMemo(() => {
+    const resultStyles = "text-lg text-center mt-10"
     if (searchValue === "")
-      return <p>Please ensure the search bar is not empty</p>;
+      return <p className={resultStyles}>Please ensure the search bar is not empty</p>;
     if (loading) return <p>Loading page..</p>;
     if (error) return <p>{error}</p>;
-    if (data) {
+    if (data && data.meals) {
       return data.meals.map((recipe) => {
         return (
-          <li key={recipe.idMeal}>
-            <Link to={`/recipe/${recipe.idMeal}`}>
-              <h2>{recipe.strMeal}</h2>
+          <li className="hover:bg-gray-200 rounded-md max-w-xs" key={recipe.idMeal}>
+            <Link className="flex flex-col px-10 max-w-300 py-5" to={`/recipe/${recipe.idMeal}`}>
+              <h2 className="text-xlg text-center font-semibold">{recipe.strMeal}</h2>
               {recipe.strMealThumb && (
-                <img src={recipe.strMealThumb} alt={recipe.strMeal} />
+                <img src={recipe.strMealThumb} className="w-auto rounded-md max-w-xs" alt={recipe.strMeal} />
               )}
             </Link>
           </li>
         );
-      });
+      }
+    );
+    }
+    if (data && !data.meals) {
+      return <p className={resultStyles}>No matches found</p>
     }
   }, [searchValue, data, loading, error]);
 
   return (
-    <div>
+    <div className="flex flex-col gap-5">
       <SearchBar
         currentSearch={currentSearch}
         isDynamic={false}
         displaySearchButton={true}
       />
-      <ul>{searchResults}</ul>
+      <ul className="flex flex-row flex-wrap justify-center items-center gap-5 list-none">{searchResults}</ul>
     </div>
   );
 }

@@ -46,12 +46,13 @@ export default function SearchBar({
           onChange={handleChange}
           onKeyDown={submitSearch}
         />
-        {search==="" &&
-        <MagnifyingGlassIcon
-          width={24}
-          height={24}
-          className="absolute right-3 top-1/2 -translate-y-1/2" 
-        /> }
+        {search === "" && (
+          <MagnifyingGlassIcon
+            width={24}
+            height={24}
+            className="absolute right-3 top-1/2 -translate-y-1/2"
+          />
+        )}
       </div>
       {displaySearchButton && (
         <button
