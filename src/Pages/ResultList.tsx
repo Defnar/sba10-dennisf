@@ -47,9 +47,7 @@ export default function ResultList({ listType }: ResultListProp) {
         isDynamic={true}
         displaySearchButton={false}
       />
-      <ul className="flex flex-row flex-wrap justify-center items-center gap-5 list-none">
-        <RecipeList loading={loading} meals={filteredList} error={error} />
-      </ul>
+      <RecipeList loading={loading} meals={filteredList} error={error} />
     </div>
   );
 }
