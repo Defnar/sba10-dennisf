@@ -2,6 +2,7 @@ import { useCallback, useMemo, useState } from "react";
 import type { Meal, ThemeContextType } from "../utils/types";
 import { FavoritesContext, ThemeContext } from "./contexts";
 import useLocalStorage from "../hooks/useLocalStorage";
+import { Slide, toast } from "react-toastify";
 
 interface AppProviders {
   children: React.ReactNode;
@@ -32,14 +33,35 @@ export default function AppProviders({ children }: AppProviders) {
 
   const toggleFavorite = useCallback(
     (meal: Meal) => {
-      if (favoriteIds.includes(meal.idMeal))
+      let addingToFavorite: boolean;
+      if (favoriteIds.includes(meal.idMeal)) {
         setFavorites((prev) =>
           prev.filter((item) => item.idMeal !== meal.idMeal)
         );
-      else {
+        addingToFavorite = false;
+      } else {
         setFavorites((prev) => [...prev, meal]);
+        addingToFavorite = true;
       }
+
+      toast.success(
+        `${meal.strMeal} ${
+          addingToFavorite ? "added to" : "removed from"
+        } favorites`,
+        {
+          position: "top-center",
+          autoClose: 1000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Slide,
+        }
+      );
     },
+
     [favoriteIds, setFavorites]
   );
 

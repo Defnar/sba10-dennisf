@@ -1,19 +1,11 @@
-import { useCallback, useMemo } from "react";
-import useLocalStorage from "../hooks/useLocalStorage";
-import type { Meal } from "../utils/types";
+import { useContext, useMemo } from "react";
 import { Link } from "react-router-dom";
+import { FavoritesContext } from "../contexts/contexts";
 
 export default function FavoritesPage() {
   //we will store the meal id for each favorite here, as needed.
-  const [favorites, setFavorites] = useLocalStorage<Meal[]>("favorites", []);
+  const {favorites, toggleFavorite} = useContext(FavoritesContext);
 
-  //remove from favorites list
-  const removeFavorite = useCallback(
-    (id: string) => {
-      setFavorites((prev) => prev.filter((item) => item.idMeal !== id));
-    },
-    [setFavorites]
-  );
 
   const displayFavorites = useMemo(() => {
     if (favorites.length === 0)
@@ -43,14 +35,14 @@ export default function FavoritesPage() {
             onClick={(e) => {
               e.stopPropagation();
               e.preventDefault();
-              removeFavorite(recipe.idMeal)}}>
+              toggleFavorite(recipe)}}>
               remove from favorites
             </button>
           </Link>
         </li>
       );
     });
-  }, [favorites, removeFavorite]);
+  }, [favorites, toggleFavorite]);
 
   return (
     <div>

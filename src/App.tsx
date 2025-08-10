@@ -7,11 +7,10 @@ import Search from "./Pages/Search";
 import { useContext, useMemo } from "react";
 import { ThemeContext } from "./contexts/contexts";
 import FavoritesPage from "./Pages/FavoritesPage";
-
+import { Slide, ToastContainer } from "react-toastify";
 
 function App() {
   const { theme } = useContext(ThemeContext);
-
 
   //ah yes, a ternary in a ternary.  my brain ;-;
   const currentTheme = useMemo(
@@ -25,8 +24,25 @@ function App() {
   );
 
   return (
-    <div className="size-full min-h-screen dark:bg-black dark:text-white" data-theme={currentTheme}>
+    <div
+      className="size-full min-h-screen dark:bg-black dark:text-white"
+      data-theme={currentTheme}
+    >
       <Header />
+      <ToastContainer
+        position="top-center"
+        autoClose={1000}
+        limit={2}
+        hideProgressBar
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme={theme}
+        transition={Slide}
+      />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route
