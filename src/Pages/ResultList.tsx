@@ -1,12 +1,12 @@
 import { Link, useParams } from "react-router-dom";
 import type { Recipe, ResultListProp } from "../utils/types";
-import { useMemo, useState } from "react";
+import { useContext, useMemo, useState } from "react";
 import generateURL from "../utils/generateURL";
 import useFetch from "../hooks/useFetch";
 import SearchBar from "../components/SearchBar";
 import { BookmarkIcon } from "@heroicons/react/24/solid";
 import {BookmarkSlashIcon} from "@heroicons/react/24/solid";
-import useCheckFavorites from "../hooks/useCheckFavorite";
+import { FavoritesContext } from "../contexts/contexts";
 
 export default function ResultList({ listType }: ResultListProp) {
   const { region, category, letter } = useParams();
@@ -14,7 +14,7 @@ export default function ResultList({ listType }: ResultListProp) {
   //compared against currently listed recipes for searching
   const [searchResults, setSearchResults] = useState<string>("");
 
-  const {favoriteIds, toggleFavorite} = useCheckFavorites();
+  const { favoriteIds, toggleFavorite } = useContext(FavoritesContext);
 
   //create end of url based on what the result list is populating
   const endOfUrl = useMemo(() => {

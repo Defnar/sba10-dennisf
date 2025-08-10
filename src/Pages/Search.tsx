@@ -1,17 +1,17 @@
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useContext, useMemo, useState } from "react";
 import SearchBar from "../components/SearchBar";
 import useFetch from "../hooks/useFetch";
 import generateURL from "../utils/generateURL";
 import { type Recipe } from "../utils/types";
 import { Link } from "react-router-dom";
-import useCheckFavorites from "../hooks/useCheckFavorite";
 import { BookmarkSlashIcon } from "@heroicons/react/24/solid";
 import { BookmarkIcon } from "@heroicons/react/24/solid";
+import { FavoritesContext } from "../contexts/contexts";
 
 export default function Search() {
   const [searchValue, setSearchValue] = useState<string>("");
 
-  const { favoriteIds, toggleFavorite } = useCheckFavorites();
+  const { favoriteIds, toggleFavorite } = useContext(FavoritesContext);
 
   const currentSearch = useCallback((input: string) => {
     setSearchValue(input);

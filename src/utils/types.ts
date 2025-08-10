@@ -118,3 +118,9 @@ export interface NavBarDropDownProps {
 export interface ThemeDropDownProp {
   closeTheme: () => void;
 }
+
+export interface FavoritesContextInterface {
+  favorites: Meal[],
+  favoriteIds: string[],
+  toggleFavorite: (meal: Meal) => void;
+}

@@ -1,17 +1,19 @@
 import { useParams } from "react-router-dom";
 import generateURL from "../utils/generateURL";
 import useFetch from "../hooks/useFetch";
-import type { Meal, Recipe, RecipeProp } from "../utils/types";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import type { Recipe, RecipeProp } from "../utils/types";
+import { useContext, useEffect, useMemo, useState } from "react";
 import getIngredientArray from "../utils/getIngredientArray";
-import useLocalStorage from "../hooks/useLocalStorage";
+import { FavoritesContext } from "../contexts/contexts";
 
 export default function Recipe({ isRandom = false }: RecipeProp) {
   const { idMeal } = useParams();
 
   //checks if the meal is in the favorites, grab from storage and save to idlist
-  const [favorites, setFavorites] = useLocalStorage<Meal[]>("favorites", []);
   const [isFavorite, setIsFavorite] = useState<boolean>(false);
+
+
+  const {favorites, favoriteIds, toggleFavorite} = useContext(FavoritesContext)
 
   //grab recipe from api
   const url = generateURL(!isRandom ? `lookup.php?i=${idMeal}` : `random.php`);
@@ -48,20 +50,10 @@ export default function Recipe({ isRandom = false }: RecipeProp) {
   //keeps track of whether item is in favorites and updates state
   useEffect(() => {
     if (!recipeData) return;
-    const favoriteIds = favorites.map((fav) => fav.idMeal);
     setIsFavorite(favoriteIds.includes(recipeData.idMeal));
-  }, [favorites, recipeData]);
+  }, [favoriteIds, favorites, recipeData]);
 
-  //toggles favorite
-  const toggleFavorite = useCallback(() => {
-    if (!recipeData) return;
-    return isFavorite
-      ? setFavorites((prev) =>
-          prev.filter((item) => item.idMeal != recipeData.idMeal)
-        )
-      : setFavorites((prev) => [...prev, recipeData]);
-  }, [recipeData, isFavorite, setFavorites]);
-
+ 
   return (
     <>
       {loading && <p>page loading...</p>}
@@ -69,7 +61,7 @@ export default function Recipe({ isRandom = false }: RecipeProp) {
       {recipeData && (
         <div className="flex flex-col items-center gap-10 px-10 py-5">
           <h2 className="font-semibold text-2xl">{recipeData.strMeal}</h2>
-          <button type="button" onClick={toggleFavorite}>
+          <button type="button" onClick={() => toggleFavorite(recipeData)}>
             {!isFavorite ? "Add to" : "Remove from"} Favorites
           </button>
           <div className="flex flex-col items-center gap-10 lg:flex-row">
