@@ -14,7 +14,9 @@ export default function RegionSection() {
   const regionSetup = useMemo(() => {
     if (data) {
       return data.meals.map((region) => (
-        <Link key={region.strArea} to={`/region/${region.strArea}`}>
+        <Link key={region.strArea}
+        className="w-30 h-auto text-center hover:bg-gray-400 bg-gray-200 shadow-md"
+        to={`/region/${region.strArea}`}>
           {region.strArea}
         </Link>
       ));
@@ -27,5 +29,5 @@ export default function RegionSection() {
     }
   }, [data, loading, error]);
 
-  return <div>{regionSetup}</div>;
+  return <div className="flex flex-row flex-wrap justify-center gap-10">{regionSetup}</div>;
 }
