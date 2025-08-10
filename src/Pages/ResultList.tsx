@@ -26,7 +26,7 @@ export default function ResultList({ listType }: ResultListProp) {
     else {
       setFavorites((prev) => [...prev, meal]);
     }
-  }, [favoriteIds, favorites, setFavorites]);
+  }, [favoriteIds, setFavorites]);
 
   //create end of url based on what the result list is populating
   const endOfUrl = useMemo(() => {

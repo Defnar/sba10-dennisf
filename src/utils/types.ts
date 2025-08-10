@@ -114,3 +114,7 @@ export interface NavBarDropDownProps {
   navFavorite: () => void;
   closeDropDown: () => void;
 }
+
+export interface ThemeDropDownProp {
+  closeTheme: () => void;
+}

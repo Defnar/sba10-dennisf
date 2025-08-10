@@ -19,13 +19,12 @@ export default function ThemeDropDown({ closeTheme }: ThemeDropDownProp) {
     const themeSet: ThemeContextType[] = ["light", "dark", "system"];
 
     return themeSet.map((item) => (
-      <button key={item} onClick={() => handleThemeChange(item)}>
-        {" "}
-        {item === theme && <CheckCircleIcon />}
+      <button className="flex flex-row self-center" key={item} onClick={() => handleThemeChange(item)}>
+        {item === theme && <CheckCircleIcon height={24} width={24}/>}
         {item}
       </button>
     ));
   }, [closeTheme, theme, toggleTheme]);
 
-  return <div ref={ref}>{buildButtons}</div>;
+  return <div className="absolute top-full right-5 bg-white border rounded w-20 flex flex-col" ref={ref}>{buildButtons}</div>;
 }
