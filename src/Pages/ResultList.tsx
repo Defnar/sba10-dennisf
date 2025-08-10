@@ -65,7 +65,7 @@ export default function ResultList({ listType }: ResultListProp) {
           {favoriteIds.includes(meal.idMeal) && <p>Currently in favorites</p>}
           <button onClick={() => toggleFavorite(meal)}>Toggle favorites</button>
           <Link className="flex flex-col px-10 max-w-300 py-5" to={`/recipe/${meal.idMeal}`}>
-            <h2 className="text-xl text-center font-semibold">{meal.strMeal}</h2>
+            <h2 className="text-2xl text-center font-semibold">{meal.strMeal}</h2>
             {meal.strMealThumb && (
               <img src={meal.strMealThumb} className="rounded-md max-w-xs" alt={`image of ${meal.strMeal}`} />
             )}

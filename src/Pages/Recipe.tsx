@@ -70,7 +70,7 @@ export default function Recipe({ isRandom = false }: RecipeProp) {
         <div className="flex flex-col items-center gap-10 px-10 py-5">
           <h2 className="font-semibold text-2xl">{recipeData.strMeal}</h2>
           <button type="button" onClick={toggleFavorite}>
-            {isFavorite ? "Add to" : "Remove from"} Favorites
+            {!isFavorite ? "Add to" : "Remove from"} Favorites
           </button>
           <div className="flex flex-col items-center gap-10 lg:flex-row">
             {recipeData.strMealThumb && (
