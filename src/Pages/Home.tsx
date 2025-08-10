@@ -29,7 +29,7 @@ export default function Home() {
       letterArray.map((letter) => (
         <React.Fragment key={letter}>
           <Link
-            className="hover:cursor-pointer w-4 text-center hover:bg-amber-400"
+            className="hover:cursor-pointer w-4 text-center hover:bg-amber-400 dark:hover:bg-amber-700"
             to={`/list/${letter.toLowerCase()}`}
           >
             {letter}
