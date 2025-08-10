@@ -60,18 +60,18 @@ export default function Home() {
       >
         Surprise Me
       </button>
-        <p className="text-3xl text-center text-black">
-          Or, select from a region or category
-        </p>
-        <AccordionSection title="Region">
+      <p className="text-3xl text-center text-black">
+        Or, select from a region or category
+      </p>
+      <AccordionSection title="Region">
         <RegionSection />
-        </AccordionSection>
-        <AccordionSection title="Category">
+      </AccordionSection>
+      <AccordionSection title="Category">
         <CategorySection />
-        </AccordionSection>
+      </AccordionSection>
 
-      <h2>Unsure, find recipes by letter</h2>
-      <div className="flex flex-row gap-1">{letterButtons}</div>
+      <h2 className="text-center font-semibold">Unsure, find recipes by letter</h2>
+      <div className="flex flex-row gap-2 justify-center text-center">{letterButtons}</div>
     </div>
   );
 }
