@@ -19,7 +19,7 @@ export default function ThemeDropDown({ closeTheme }: ThemeDropDownProp) {
     const themeSet: ThemeContextType[] = ["light", "dark", "system"];
 
     return themeSet.map((item) => (
-      <button className="flex flex-row self-center" key={item} onClick={() => handleThemeChange(item)}>
+      <button className="flex flex-row justify-center hover:cursor-pointer w-full hover:bg-blue-200" key={item} onClick={() => handleThemeChange(item)}>
         {item === theme && <CheckCircleIcon height={24} width={24}/>}
         {item}
       </button>

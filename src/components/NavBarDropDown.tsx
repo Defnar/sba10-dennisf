@@ -8,14 +8,14 @@ export default function NavBarDropDown({
 }: NavBarDropDownProps) {
   const { ref } = useOutsideClickClose(closeDropDown);
 
+  const buttonStyles = "hover:cursor-pointer hover:bg-blue-200 w-full text-center"
   return (
     <div
       ref={ref}
-      tabIndex={0}
       className="absolute top-full -left-10 mt-1 bg-white border rounded shadow-lg w-25 flex flex-col"
     >
-      <button onClick={navHome}>Home</button>
-      <button onClick={navFavorite}>Favorites</button>
+      <button className={buttonStyles} onClick={navHome}>Home</button>
+      <button className={buttonStyles} onClick={navFavorite}>Favorites</button>
     </div>
   );
 }

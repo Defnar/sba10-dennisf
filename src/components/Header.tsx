@@ -34,8 +34,12 @@ export default function Header() {
   };
 
   return (
-    <div className="w-full flex items-center flex-row px-6 py-3 justify-between">
-      <button type="button" onClick={handleBack}>
+    <div className="w-full flex items-center flex-row px-12 py-6 justify-between">
+      <button
+        type="button"
+        className="hover:cursor-pointer"
+        onClick={handleBack}
+      >
         <ArrowLeftIcon width={24} height={24} />{" "}
       </button>
       <h1 className="text-3xl font-bold md:grow md:text-center">Recipes</h1>
@@ -44,6 +48,11 @@ export default function Header() {
           height={24}
           width={24}
           onClick={() => setNavDropDown((prev) => !prev)}
+          className="hover:cursor-pointer"
+          onKeyDown={(e) =>
+            e.key === "Enter" && setNavDropDown((prev) => !prev)
+          }
+          tabIndex={0}
         />
         {navDropDown && (
           <NavBarDropDown
@@ -54,16 +63,20 @@ export default function Header() {
         )}
       </nav>
       <nav className="hidden md:flex gap-5 shrink md:mr-40">
-        <button type="button" onClick={navHome}>
+        <button type="button" className="hover:bg-blue-200 w-full rounded-sm" onClick={navHome}>
           Home
         </button>
         <p>|</p>
-        <button type="button" onClick={navFavorite}>
+        <button type="button" className="hover:bg-blue-200 w-full rounded-sm" onClick={navFavorite}>
           Favorites
         </button>
       </nav>
       <div className="relative">
-        <button type="button" onClick={() => setThemeDropDown((prev) => !prev)}>
+        <button
+          type="button"
+          className="hover:cursor-pointer"
+          onClick={() => setThemeDropDown((prev) => !prev)}
+        >
           <MoonIcon width={24} height={24} />
         </button>
         {themeDropDown && <ThemeDropDown closeTheme={closeThemeDropDown} />}

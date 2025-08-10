@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import React, { useMemo } from "react";
 import RegionSection from "../components/RegionSection";
 import CategorySection from "../components/CategorySection";
 import { Link, useNavigate } from "react-router-dom";
@@ -19,37 +19,48 @@ export default function Home() {
       searchPage: "/search/",
       randomPage: "/random",
     };
-    return objectToReturn
+    return objectToReturn;
   }, []);
 
   //turn letters into buttons for search by starting letter
   const letterButtons = useMemo(
     () =>
       letterArray.map((letter) => (
-        <Link key={letter} to={`/list/${letter.toLowerCase()}`}>
-          {letter}
-        </Link>
+        <React.Fragment key={letter}>
+          <Link className="hover:cursor-pointer w-4 text-center hover:bg-amber-400" to={`/list/${letter.toLowerCase()}`}>
+            {letter}
+          </Link>{" "}
+          {letter != "Z" && <p> | </p>}
+        </React.Fragment>
       )),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     []
   );
 
+  const buttonStyles = "text-black font-semibold w-40 py-2 bg-amber-400 hover:bg-amber-600 hover:cursor-pointer my-2 self-center rounded-md shadow-md"
   //fetch data to show in each home page region
   return (
-    <div>
-      <button type="button" onClick={() => handleNavigate(navigatePages.searchPage)}>
+    <div className="flex flex-col text-gray-900">
+      <button
+        type="button" className={buttonStyles}
+        onClick={() => handleNavigate(navigatePages.searchPage)}
+      >
         Search for a recipe
       </button>
-      <button type="button" onClick={() => handleNavigate(navigatePages.randomPage)}>
+      <button
+        type="button" className={buttonStyles}
+        onClick={() => handleNavigate(navigatePages.randomPage)}
+      >
         Surprise Me
       </button>
-      <h2>Unsure, find recipes by letter</h2>
-      {letterButtons}
-      <p>Or, select from a region or category</p>
+      <p className="text-3xl text-center text-black">Or, select from a region or category</p>
       <h2>Region</h2>
       <RegionSection />
       <h2>Category</h2>
       <CategorySection />
+      
+      <h2>Unsure, find recipes by letter</h2>
+      <div className="flex flex-row gap-1">{letterButtons}</div>
     </div>
   );
 }
