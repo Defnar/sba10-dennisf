@@ -1,31 +1,12 @@
-import { useEffect, useRef, useState } from "react";
 import type { NavBarDropDownProps } from "../utils/types";
+import { useOutsideClickClose } from "../hooks/useOutsideClickClose";
 
 export default function NavBarDropDown({
   navHome,
   navFavorite,
   closeDropDown,
 }: NavBarDropDownProps) {
-  const ref = useRef<HTMLDivElement>(null);
-
-  const [closeable, setCloseable] = useState<boolean>(false);
-
-  useEffect(() => {
-    const handleOutsideClicks = (e: MouseEvent) => {
-      if (closeable && ref.current && !ref.current.contains(e.target as Node)) {
-        closeDropDown();
-        setCloseable(false);
-      }
-    };
-
-    document.addEventListener("click", handleOutsideClicks);
-    setCloseable(true);
-
-    return () => {
-      document.removeEventListener("click", handleOutsideClicks);
-    };
-    setCloseable(false);
-  }, [closeable, closeDropDown]);
+  const { ref } = useOutsideClickClose(closeDropDown);
 
   return (
     <div
