@@ -48,7 +48,7 @@ export default function useFetch<APIData>(url: string | null) {
       controller.abort();
       clearTimeout(abortTimeout);
     };
-  }, [error, url]);
+  }, [url]);
 
   return { loading, data, error };
 }

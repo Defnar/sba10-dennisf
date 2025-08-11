@@ -16,7 +16,6 @@ export default function Search() {
     searchValue !== "" ? generateURL(`search.php?s=${searchValue}`) : null;
 
   const { loading, data, error } = useFetch<Recipe>(url);
-  console.log(data);
 
   return (
     <div className="flex flex-col gap-5">
