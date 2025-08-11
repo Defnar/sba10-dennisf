@@ -1,5 +1,5 @@
 # ReadMe Instructions
--- README.md: The repository must include a README.md file that contains:
+--  README.md: The repository must include a README.md file that contains:
 A brief description of the application and its features.
 Instructions on how to install dependencies and run the project locally.
 -- Reflection: A short section in your README.md or in a separate REFLECTION.md file detailing:
