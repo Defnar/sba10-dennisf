@@ -29,3 +29,7 @@ A brief explanation of a design decision you made (e.g., why you structured a ho
 
 ## Design choice
   - I wanted to originally use a dynamic search bar, but realized that was bad on the api calls, even with a custom usedebounce hook.  I ended up creating the search bar to function as a more general-use component, allowing for it to display or hide it's search button, listen for enter key input, and act either dynamic or wait for submit.  This allowed me to make it non-dynamic for api-call searching, but allow dynamic searching on already-gathered data from the api, such as from category or region.  While I feel, generally, you want to keep same search functionality across an app, I wanted to test out implementing both in a single component.  Maybe I could, in the future, expand this component into my own search component for multiple projects, allowing for more design, more options and behaviors.
+
+
+## side note
+- resizing in dev tools seemed to cause issues with the site breaking, but resizing using the browser works fine
