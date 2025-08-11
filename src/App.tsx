@@ -8,6 +8,7 @@ import { useContext, useMemo } from "react";
 import { ThemeContext } from "./contexts/contexts";
 import FavoritesPage from "./Pages/FavoritesPage";
 import { Slide, ToastContainer } from "react-toastify";
+import PageNotFound from "./Pages/PageNotFound";
 
 function App() {
   const { theme } = useContext(ThemeContext);
@@ -61,6 +62,7 @@ function App() {
         <Route path="/search/" element={<Search />} />
         <Route path="/random" element={<Recipe isRandom={true} />} />
         <Route path="/favorites" element={<FavoritesPage />} />
+        <Route path="/*" element={<PageNotFound />} />
       </Routes>
     </div>
   );
