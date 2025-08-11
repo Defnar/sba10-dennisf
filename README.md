@@ -1,8 +1,8 @@
 # ReadMe Instructions
--- README.md: The repository must include a README.md file that contains:
+- README.md: The repository must include a README.md file that contains:
 A brief description of the application and its features.
 Instructions on how to install dependencies and run the project locally.
--- Reflection: A short section in your README.md or in a separate REFLECTION.md file detailing:
+- Reflection: A short section in your README.md or in a separate REFLECTION.md file detailing:
 The most challenging part of the project for you.
 A brief explanation of a design decision you made (e.g., why you structured a hook a certain way, how you decided to manage a piece of state).
 
@@ -23,7 +23,7 @@ A brief explanation of a design decision you made (e.g., why you structured a ho
 - https://www.npmjs.com/package/react-toastify
 - to install, run `npm install --save react-toastify` in the main folder
 
-#ReadMe Answers
+# ReadMe Answers
 ## Most Challenging part
 - The planning.  Planning everything out, creating a figma design to help process my thoughts or ideas.  The amount of pages/components/items I felt like I was juggling at the start when I was mentally mapping the project out was slightly overwhelming, but became easier as I jotted down notes and got a clearer picture of how everything should intertwine/layer together to create a functional and somewhat appealing (the design is definitely not professional by any means) app.  Refactoring several times to turn component-functions into their own components or react custom hooks. As an example, I realized that category, region, and letter list could all use the same component to display, and I just needed the component to determine what kind of api it needed to run.  Hence, we have ResultList which takes in "region", "category" and "letter" through props, while grabbing their useParam for the api through params.
 
